@@ -7,13 +7,14 @@ class App extends Component {
     this.state = {};
   }
 
-  edit() {}
-  submit() {}
+  editBtn(onClickFunc) {
+    return <button onClick={onClickFunc}>Edit</button>;
+  }
 
   render() {
     return (
       <div>
-        <General />
+        <General editBtn={this.editBtn} />
       </div>
     );
   }
