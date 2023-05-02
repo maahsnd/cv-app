@@ -36,9 +36,9 @@ class Education extends Component {
   displayData() {
     return (
       <div>
-        <h2>{this.state.school}</h2>
-        <h2>{this.state.areaOfStudy}</h2>
-        <h2>{this.state.dates}</h2>
+        <h2>School: {this.state.school}</h2>
+        <h2>Area of Study: {this.state.areaOfStudy}</h2>
+        <h2>Dates :{this.state.dates}</h2>
         {this.editBtn(this.edit)}
       </div>
     );
