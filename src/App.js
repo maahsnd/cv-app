@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      
+    }
   }
-  { }
+
+  { 
+  edit() {
+
+  }
+  submit() {
+
+  }
+  
+  }
   
 render() {
   return (
-    <div></div>
+    <div>
+      < General />
+    </div>
   )
   }
 
