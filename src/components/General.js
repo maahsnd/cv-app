@@ -6,9 +6,11 @@ class General extends Component {
     this.state = {
       name: '',
       email: '',
-      tel: ''
+      tel: '',
+      editing: true
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   /* Responsibility:       
@@ -17,47 +19,71 @@ class General extends Component {
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('submit');
+    this.setState({ editing: false });
+  }
+
+  displayData() {
+    return (
+      <div>
+        <h2>{this.state.name}</h2>
+        <h2>{this.state.email}</h2>
+        <h2>{this.state.tel}</h2>
+      </div>
+    );
+  }
+
+  editForm() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <label>
+          Phone number:
+          <input
+            type="tel"
+            name="tel"
+            value={this.state.tel}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <input type="submit" value="Submit" />
+      </form>
+    );
   }
 
   render() {
-    return (
-      <div>
-        <form>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </label>
+    const editingStatus = this.state.editing;
+    let generalInfo;
+    editingStatus
+      ? (generalInfo = this.editForm())
+      : (generalInfo = this.displayData());
+    console.log(generalInfo);
 
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label>
-            Phone number:
-            <input
-              type="tel"
-              name="tel"
-              value={this.state.tel}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-    );
+    return <div>{generalInfo}</div>;
   }
 }
 
