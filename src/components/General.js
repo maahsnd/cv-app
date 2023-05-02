@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class General extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       email: '',
@@ -11,6 +11,8 @@ class General extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.edit = this.edit.bind(this);
+    this.editBtn = props.editBtn;
   }
 
   /* Responsibility:       
@@ -23,8 +25,11 @@ class General extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submit');
     this.setState({ editing: false });
+  }
+
+  edit() {
+    this.setState({ editing: true });
   }
 
   displayData() {
@@ -33,6 +38,7 @@ class General extends Component {
         <h2>{this.state.name}</h2>
         <h2>{this.state.email}</h2>
         <h2>{this.state.tel}</h2>
+        {this.editBtn(this.edit)}
       </div>
     );
   }
