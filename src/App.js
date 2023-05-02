@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
+import General from './components/General';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      
-    }
+    this.state = {};
   }
 
-  { 
-  edit() {
+  edit() {}
+  submit() {}
 
+  render() {
+    return (
+      <div>
+        <General />
+      </div>
+    );
   }
-  submit() {
-
-  }
-  
-  }
-  
-render() {
-  return (
-    <div>
-      < General />
-    </div>
-  )
-  }
-
 }
 
 export default App;
