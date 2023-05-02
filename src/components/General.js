@@ -35,10 +35,10 @@ class General extends Component {
 
   displayData() {
     return (
-      <div>
-        <h2>{this.state.name}</h2>
-        <h2>{this.state.email}</h2>
-        <h2>{this.state.tel}</h2>
+      <div className="display">
+        <p>{this.state.name}</p>
+        <p>{this.state.email}</p>
+        <p>{this.state.tel}</p>
         {this.editBtn(this.edit)}
       </div>
     );

@@ -15,7 +15,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="host">
+        <h2 className="title">My CV</h2>
         <General editBtn={this.editBtn} />
         <hr></hr>
         <Education editBtn={this.editBtn} />

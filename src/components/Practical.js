@@ -38,11 +38,11 @@ class Practical extends Component {
 
   displayData() {
     return (
-      <div>
-        <h2>Company: {this.state.companyName}</h2>
-        <h2>Position: {this.state.positionTitle}</h2>
-        <h2>Main tasks: {this.state.mainTasks}</h2>
-        <h2>Dates: {this.state.dates}</h2>
+      <div className="display">
+        <p>Company: {this.state.companyName}</p>
+        <p>Position: {this.state.positionTitle}</p>
+        <p>Main tasks: {this.state.mainTasks}</p>
+        <p>Dates: {this.state.dates}</p>
         {this.editBtn(this.edit)}
       </div>
     );
