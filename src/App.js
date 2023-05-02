@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 
-function App() {
-  return <div></div>;
+class App extends Component {
+  constructor() {
+    super()
+  }
+  { }
+  
+render() {
+  return (
+    <div></div>
+  )
+  }
+
 }
 
 export default App;
