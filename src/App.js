@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import General from './components/General';
+import Education from './components/Education';
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,8 @@ class App extends Component {
     return (
       <div>
         <General editBtn={this.editBtn} />
+        <hr></hr>
+        <Education editBtn={this.editBtn} />
       </div>
     );
   }

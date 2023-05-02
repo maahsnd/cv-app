@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class General extends Component {
+class Education extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      tel: '',
+      school: '',
+      areaOfStudy: '',
+      dates: '',
       editing: true
     };
     this.handleChange = this.handleChange.bind(this);
@@ -15,10 +15,11 @@ class General extends Component {
     this.editBtn = props.editBtn;
   }
 
-  /* Responsibility:       
-  Creates a section to add general information like name, email, phone number.
-  Edit & submit-edit btns via props. */
-
+  /*  
+    Responsiblity:
+    A section to add your educational experience (school name, title of study, date of study).
+    Edit & submit-edit btns via props.
+   */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -35,9 +36,9 @@ class General extends Component {
   displayData() {
     return (
       <div>
-        <h2>{this.state.name}</h2>
-        <h2>{this.state.email}</h2>
-        <h2>{this.state.tel}</h2>
+        <h2>{this.state.school}</h2>
+        <h2>{this.state.areaOfStudy}</h2>
+        <h2>{this.state.dates}</h2>
         {this.editBtn(this.edit)}
       </div>
     );
@@ -47,31 +48,31 @@ class General extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          School:
           <input
             type="text"
-            name="name"
-            value={this.state.name}
+            name="school"
+            value={this.state.school}
             onChange={this.handleChange}
           />
         </label>
 
         <label>
-          Email:
+          Area of Study:
           <input
-            type="email"
-            name="email"
-            value={this.state.email}
+            type="text"
+            name="areaOfStudy"
+            value={this.state.areaOfStudy}
             onChange={this.handleChange}
           />
         </label>
 
         <label>
-          Phone number:
+          Dates of Study:
           <input
-            type="tel"
-            name="tel"
-            value={this.state.tel}
+            type="text"
+            name="dates"
+            value={this.state.dates}
             onChange={this.handleChange}
           />
         </label>
@@ -92,4 +93,4 @@ class General extends Component {
   }
 }
 
-export default General;
+export default Education;
