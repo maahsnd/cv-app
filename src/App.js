@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import General from './components/General';
 import Education from './components/Education';
+import Practical from './components/Practical';
 
 class App extends Component {
   constructor() {
@@ -18,6 +19,8 @@ class App extends Component {
         <General editBtn={this.editBtn} />
         <hr></hr>
         <Education editBtn={this.editBtn} />
+        <hr></hr>
+        <Practical editBtn={this.editBtn} />
       </div>
     );
   }
