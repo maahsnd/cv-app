@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/style.css';
 
 class Practical extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Practical extends Component {
       <div>
         <h2>Company: {this.state.companyName}</h2>
         <h2>Position: {this.state.positionTitle}</h2>
-        <p>Main tasks: {this.state.mainTasks}</p>
+        <h2>Main tasks: {this.state.mainTasks}</h2>
         <h2>Dates: {this.state.dates}</h2>
         {this.editBtn(this.edit)}
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/style.css';
 
 class General extends Component {
   constructor(props) {
