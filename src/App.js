@@ -1,30 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import General from './components/General';
 import Education from './components/Education';
 import Practical from './components/Practical';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+const App = () => {
+  const editBtn = (onClickFunc) => {
+    <button onClick={onClickFunc}>Edit</button>;
+  };
 
-  editBtn(onClickFunc) {
-    return <button onClick={onClickFunc}>Edit</button>;
-  }
-
-  render() {
-    return (
-      <div className="host">
-        <h2 className="title">My CV</h2>
-        <General editBtn={this.editBtn} />
-        <hr></hr>
-        <Education editBtn={this.editBtn} />
-        <hr></hr>
-        <Practical editBtn={this.editBtn} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="host">
+      <h2 className="title">My CV</h2>
+      <General editBtn={editBtn} />
+      <hr></hr>
+      <Education editBtn={editBtn} />
+      <hr></hr>
+      <Practical editBtn={editBtn} />
+    </div>
+  );
+};
 
 export default App;

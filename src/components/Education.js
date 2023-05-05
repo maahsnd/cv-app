@@ -1,60 +1,68 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../styles/style.css';
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      school: '',
-      areaOfStudy: '',
-      dates: '',
-      editing: true
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.edit = this.edit.bind(this);
-    this.editBtn = props.editBtn;
-  }
+const Education = (props) => {
+  const [school, setSchool] = useState('');
+  const [areaOfStudy, setAreaOfStudy] = useState('');
+  const [dates, setDates] = useState('');
+  const [editing, setEditing] = useState(true);
+
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+  this.edit = this.edit.bind(this);
+
+  const editBtn = props.editBtn;
 
   /*  
     Responsiblity:
     A section to add your educational experience (school name, title of study, date of study).
     Edit & submit-edit btns via props.
    */
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const handleChange = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    /* potential bug: comparison of field and string fails */
+    if (field == 'school') {
+      setSchool(value);
+    }
+    if (field == 'areaOfStudy') {
+      setAreaOfStudy(value);
+    }
+    if (field == 'dates') {
+      setDates(value);
+    }
+  };
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ editing: false });
-  }
+    setEditing(false);
+  };
 
-  edit() {
-    this.setState({ editing: true });
-  }
+  const edit = () => {
+    setEditing(true);
+  };
 
-  displayData() {
+  const displayData = () => {
     return (
       <div className="display">
-        <p>School: {this.state.school}</p>
-        <p>Area of Study: {this.state.areaOfStudy}</p>
-        <p>Dates: {this.state.dates}</p>
-        {this.editBtn(this.edit)}
+        <p>School: {school}</p>
+        <p>Area of Study: {areaOfStudy}</p>
+        <p>Dates: {dates}</p>
+        {editBtn(edit)}
       </div>
     );
-  }
+  };
 
-  editForm() {
+  const editForm = () => {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           School:
           <input
             type="text"
             name="school"
-            value={this.state.school}
-            onChange={this.handleChange}
+            value={school}
+            onChange={handleChange}
           />
         </label>
 
@@ -63,8 +71,8 @@ class Education extends Component {
           <input
             type="text"
             name="areaOfStudy"
-            value={this.state.areaOfStudy}
-            onChange={this.handleChange}
+            value={areaOfStudy}
+            onChange={handleChange}
           />
         </label>
 
@@ -73,25 +81,22 @@ class Education extends Component {
           <input
             type="text"
             name="dates"
-            value={this.state.dates}
-            onChange={this.handleChange}
+            value={dates}
+            onChange={handleChange}
           />
         </label>
 
         <input type="submit" value="Submit" />
       </form>
     );
-  }
+  };
 
-  render() {
-    const editingStatus = this.state.editing;
-    let generalInfo;
-    editingStatus
-      ? (generalInfo = this.editForm())
-      : (generalInfo = this.displayData());
+  let generalInfo;
+  editing
+    ? (generalInfo = this.editForm())
+    : (generalInfo = this.displayData());
 
-    return <div>{generalInfo}</div>;
-  }
-}
+  return <div>{generalInfo}</div>;
+};
 
 export default Education;

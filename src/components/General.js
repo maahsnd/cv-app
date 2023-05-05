@@ -1,60 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../styles/style.css';
 
-class General extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      tel: '',
-      editing: true
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.edit = this.edit.bind(this);
-    this.editBtn = props.editBtn;
-  }
+const General = (props) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [tel, setTel] = useState('');
+  const [editing, setEditing] = useState(true);
+
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+  this.edit = this.edit.bind(this);
+  editBtn = props.editBtn;
 
   /* Responsibility:       
   Creates a section to add general information like name, email, phone number.
   Edit & submit-edit btns via props. */
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const handleChange = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    /* potential bug: comparison of field and string fails */
+    if (field == 'name') {
+      setName(value);
+    }
+    if (field == 'email') {
+      setEmail(value);
+    }
+    if (field == 'tel') {
+      setTel(value);
+    }
+  };
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ editing: false });
-  }
+    setEditing(false);
+  };
 
-  edit() {
-    this.setState({ editing: true });
-  }
+  const edit = () => {
+    setEditing(true);
+  };
 
-  displayData() {
+  const displayData = () => {
     return (
       <div className="display">
-        <p>{this.state.name}</p>
-        <p>{this.state.email}</p>
-        <p>{this.state.tel}</p>
-        {this.editBtn(this.edit)}
+        <p>{name}</p>
+        <p>{email}</p>
+        <p>{tel}</p>
+        {editBtn(edit)}
       </div>
     );
-  }
+  };
 
-  editForm() {
+  const editForm = () => {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Name:
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
+          <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
 
         <label>
@@ -62,35 +64,25 @@ class General extends Component {
           <input
             type="email"
             name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
+            value={email}
+            onChange={handleChange}
           />
         </label>
 
         <label>
           Phone number:
-          <input
-            type="tel"
-            name="tel"
-            value={this.state.tel}
-            onChange={this.handleChange}
-          />
+          <input type="tel" name="tel" value={tel} onChange={handleChange} />
         </label>
 
         <input type="submit" value="Submit" />
       </form>
     );
-  }
+  };
 
-  render() {
-    const editingStatus = this.state.editing;
-    let generalInfo;
-    editingStatus
-      ? (generalInfo = this.editForm())
-      : (generalInfo = this.displayData());
+  let generalInfo;
+  editing ? (generalInfo = editForm()) : (generalInfo = displayData());
 
-    return <div>{generalInfo}</div>;
-  }
-}
+  return <div>{generalInfo}</div>;
+};
 
 export default General;

@@ -1,63 +1,72 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../styles/style.css';
 
-class Practical extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      companyName: '',
-      positionTitle: '',
-      mainTasks: '',
-      dates: '',
-      editing: true
-    };
+const Practical = (props) => {
+  const [companyName, setCompanyName] = useState('');
+  const [positionTitle, setPositionTitle] = useState('');
+  const [mainTasks, setMainTasks] = useState('');
+  const [dates, setDates] = useState('');
+  const [editing, setEditing] = useState(true);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.edit = this.edit.bind(this);
-    this.editBtn = props.editBtn;
-  }
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+  this.edit = this.edit.bind(this);
+  const editBtn = props.editBtn;
 
   /*  
     Responsiblity:
       A section to add practical experience (company name, position title, main tasks of your
       jobs, date from and until when you worked for that company). Edit & submit-edit btns via props.
    */
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+  const handleChange = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    /* potential bug: comparison of field and string fails */
+    if (field == 'companyName') {
+      setCompanyName(value);
+    }
+    if (field == 'positionTitle') {
+      setPositionTitle(value);
+    }
+    if (field == 'mainTasks') {
+      setMainTasks(value);
+    }
+    if (field == 'dates') {
+      setDates(value);
+    }
+  };
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({ editing: false });
-  }
+    setEditing(false);
+  };
 
-  edit() {
-    this.setState({ editing: true });
-  }
+  const edit = () => {
+    setEditing(true);
+  };
 
-  displayData() {
+  const displayData = () => {
     return (
       <div className="display">
-        <p>Company: {this.state.companyName}</p>
-        <p>Position: {this.state.positionTitle}</p>
-        <p>Main tasks: {this.state.mainTasks}</p>
-        <p>Dates: {this.state.dates}</p>
-        {this.editBtn(this.edit)}
+        <p>Company: {companyName}</p>
+        <p>Position: {positionTitle}</p>
+        <p>Main tasks: {mainTasks}</p>
+        <p>Dates: {dates}</p>
+        {editBtn(edit)}
       </div>
     );
-  }
+  };
 
-  editForm() {
+  const editForm = () => {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Company Name:
           <input
             type="text"
             name="companyName"
-            value={this.state.companyName}
-            onChange={this.handleChange}
+            value={companyName}
+            onChange={handleChange}
           />
         </label>
 
@@ -66,8 +75,8 @@ class Practical extends Component {
           <input
             type="text"
             name="positionTitle"
-            value={this.state.positionTitle}
-            onChange={this.handleChange}
+            value={positionTitle}
+            onChange={handleChange}
           />
         </label>
 
@@ -76,8 +85,8 @@ class Practical extends Component {
           <input
             type="text"
             name="mainTasks"
-            value={this.state.mainTasks}
-            onChange={this.handleChange}
+            value={mainTasks}
+            onChange={handleChange}
           />
         </label>
 
@@ -86,25 +95,20 @@ class Practical extends Component {
           <input
             type="text"
             name="dates"
-            value={this.state.dates}
-            onChange={this.handleChange}
+            value={dates}
+            onChange={handleChange}
           />
         </label>
 
         <input type="submit" value="Submit" />
       </form>
     );
-  }
+  };
 
-  render() {
-    const editingStatus = this.state.editing;
-    let generalInfo;
-    editingStatus
-      ? (generalInfo = this.editForm())
-      : (generalInfo = this.displayData());
+  let generalInfo;
+  editing ? (generalInfo = editForm()) : (generalInfo = displayData());
 
-    return <div>{generalInfo}</div>;
-  }
-}
+  return <div>{generalInfo}</div>;
+};
 
 export default Practical;
