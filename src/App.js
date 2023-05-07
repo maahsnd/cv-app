@@ -4,18 +4,14 @@ import Education from './components/Education';
 import Practical from './components/Practical';
 
 const App = () => {
-  const editBtn = (onClickFunc) => {
-    <button onClick={onClickFunc}>Edit</button>;
-  };
-
   return (
     <div className="host">
       <h2 className="title">My CV</h2>
-      <General editBtn={editBtn} />
+      <General />
       <hr></hr>
-      <Education editBtn={editBtn} />
+      <Education />
       <hr></hr>
-      <Practical editBtn={editBtn} />
+      <Practical />
     </div>
   );
 };

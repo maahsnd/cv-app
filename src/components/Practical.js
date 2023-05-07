@@ -8,11 +8,6 @@ const Practical = (props) => {
   const [dates, setDates] = useState('');
   const [editing, setEditing] = useState(true);
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-  this.edit = this.edit.bind(this);
-  const editBtn = props.editBtn;
-
   /*  
     Responsiblity:
       A section to add practical experience (company name, position title, main tasks of your
@@ -52,7 +47,7 @@ const Practical = (props) => {
         <p>Position: {positionTitle}</p>
         <p>Main tasks: {mainTasks}</p>
         <p>Dates: {dates}</p>
-        {editBtn(edit)}
+        <button onClick={edit}>Edit</button>
       </div>
     );
   };

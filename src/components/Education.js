@@ -7,12 +7,6 @@ const Education = (props) => {
   const [dates, setDates] = useState('');
   const [editing, setEditing] = useState(true);
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-  this.edit = this.edit.bind(this);
-
-  const editBtn = props.editBtn;
-
   /*  
     Responsiblity:
     A section to add your educational experience (school name, title of study, date of study).
@@ -48,7 +42,7 @@ const Education = (props) => {
         <p>School: {school}</p>
         <p>Area of Study: {areaOfStudy}</p>
         <p>Dates: {dates}</p>
-        {editBtn(edit)}
+        <button onClick={edit}>Edit</button>
       </div>
     );
   };
@@ -92,9 +86,7 @@ const Education = (props) => {
   };
 
   let generalInfo;
-  editing
-    ? (generalInfo = this.editForm())
-    : (generalInfo = this.displayData());
+  editing ? (generalInfo = editForm()) : (generalInfo = displayData());
 
   return <div>{generalInfo}</div>;
 };

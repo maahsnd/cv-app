@@ -7,11 +7,6 @@ const General = (props) => {
   const [tel, setTel] = useState('');
   const [editing, setEditing] = useState(true);
 
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-  this.edit = this.edit.bind(this);
-  editBtn = props.editBtn;
-
   /* Responsibility:       
   Creates a section to add general information like name, email, phone number.
   Edit & submit-edit btns via props. */
@@ -46,7 +41,7 @@ const General = (props) => {
         <p>{name}</p>
         <p>{email}</p>
         <p>{tel}</p>
-        {editBtn(edit)}
+        <button onClick={edit}>Edit</button>
       </div>
     );
   };
