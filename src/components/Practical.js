@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/style.css';
 
-const Practical = (props) => {
+const Practical = () => {
   const [companyName, setCompanyName] = useState('');
   const [positionTitle, setPositionTitle] = useState('');
   const [mainTasks, setMainTasks] = useState('');

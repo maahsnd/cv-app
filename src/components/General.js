@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/style.css';
 
-const General = (props) => {
+const General = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/style.css';
 
-const Education = (props) => {
+const Education = () => {
   const [school, setSchool] = useState('');
   const [areaOfStudy, setAreaOfStudy] = useState('');
   const [dates, setDates] = useState('');
